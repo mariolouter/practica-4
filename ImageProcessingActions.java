@@ -14,7 +14,9 @@ public class ImageProcessingActions {
     }
 
     public static void entrelazarPressed(ImageProcessingGUI gui) {
-        // COMPLETAR
+        int[][] img = gui.getImage();
+        img = ImageUtils.entrelazar(img);
+        gui.setImage(img);
     }
 
     public static void pixelarPressed(ImageProcessingGUI gui, int value) {
@@ -25,8 +27,8 @@ public class ImageProcessingActions {
 
     }
 
-    public static void sobelPressed(ImageProcessingGUI gui) {
-        // COMPLETAR
+    public static void sobelPressed(ImageProcessingGUI gui, int value) {
+        // TODO Filter sobel
     }
 
 }

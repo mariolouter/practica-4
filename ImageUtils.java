@@ -35,7 +35,7 @@ public class ImageUtils {
         int totalPixeles = (row + w - row + 1) * (col + w - col + 1);
         for (int i = row; i <= row + w; i++) {
             for (int j = col; j <= col + w; j++) {
-                if (i<img.length && j<img[i].length) {
+                if (i < img.length && j < img[i].length) {
                     valores += img[i][j];
                 }
             }
@@ -47,7 +47,7 @@ public class ImageUtils {
     private static void ponerValoresSubmatriz(int[][] img, int row, int col, int w, int value) {
         for (int i = row; i < row + w; i++) {
             for (int j = col; j < col + w; j++) {
-                if (i<img.length && j<img[i].length) {
+                if (i < img.length && j < img[i].length) {
                     img[i][j] = value;
                 }
             }
@@ -59,6 +59,27 @@ public class ImageUtils {
             for (int y = 0; y < img[x].length; y += w) {
                 int value = mediaSubMatriz(img, x, y, w);
                 ponerValoresSubmatriz(img, x, y, w, value);
+            }
+        }
+        return img;
+    }
+
+
+    // Sobreescribir la anterior, guardar la actual, sobreescribir la actual
+
+   public static int[][] entrelazar(int[][] img) {
+        int[] bufferAnt = new int[]{};
+        int[] bufferCurr = new int[]{};
+        for (int x = 0; x < img.length; x++) {
+            if (x != 0) {
+                if (x % 2 != 0){
+                    // impar
+                    bufferAnt = img[x-1];
+                    img[x - 1] = img[x];
+                    bufferCurr = img[x];
+                    img[x] = bufferAnt;
+                    bufferAnt = bufferCurr;
+                }
             }
         }
         return img;

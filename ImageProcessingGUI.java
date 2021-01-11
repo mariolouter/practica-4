@@ -221,7 +221,8 @@ public class ImageProcessingGUI extends JPanel implements ActionListener {
                     ImageProcessingActions.pixelarPressed(this, value);
                     break;
                 case "Sobel":
-                    ImageProcessingActions.sobelPressed(this);
+                    value = elegirValor(0, 255,255);
+                    ImageProcessingActions.sobelPressed(this, value);
                     break;
             }
 
